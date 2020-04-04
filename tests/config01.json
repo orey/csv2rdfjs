@@ -1,0 +1,14 @@
+{
+    "filename" : "test01.csv",
+    "conceptname" : "DesignSolution",
+    "pkey-strategy" : 1,
+    "pkey" : "2",
+    "pkey-alias" : "",""
+    
+    
+
+DS origin;DS Number;DS Type;DS Version;DS Name;DS State;DS Part Classification;Retrofit Links;Evolution Links;CI Number;MCA Number;Module Number;Implementation Plan Number;Implementation Plan Version;Implementation Plan State;MOE Code;ECP Number;ECP Name;ECP Version;ECP State;ECP Class;ECP Certification;ECP Airworthiness classification;Applicability;Planned Applicability;LCI Number;LCI name;Initial Type Design;NPC;CSI;Delivery code;Delivery quantity;Embodiment state;Delta DS 06/03;Delta NPC 06/03
+
+    
+}
+

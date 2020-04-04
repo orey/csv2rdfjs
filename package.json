@@ -1,0 +1,27 @@
+{
+  "name": "csv2rdfjs",
+  "version": "1.0.0",
+  "description": "Converts CSV to RDF",
+  "main": "csv2rdf.js",
+  "scripts": {
+    "test": "node test.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orey/csv2rdfjs.git"
+  },
+  "keywords": [
+    "csv",
+    "rdf",
+    "semantic_web"
+  ],
+  "author": "Olivier Rey",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/orey/csv2rdfjs/issues"
+  },
+  "homepage": "https://github.com/orey/csv2rdfjs#readme",
+  "dependencies": {
+    "csv-reader": "^1.0.6"
+  }
+}
