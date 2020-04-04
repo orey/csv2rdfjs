@@ -28,17 +28,34 @@ Sample of use: ```"conceptname" : "Ingredient",``` in the JSON configuration fil
 
 The ```conceptname``` will be potentially used several times later on.
 
+The triple generated will be:
+```
+conceptname rdfs:subClassOf rdfs:Class.
+```
+
 ### Primary key
 
 In each row, hides a primary key. This "pkey" is very important because it will be the subject of many triples we will generate.
 
 The keyword to fill in the JSON configuration file is ```pkeys-pattern```.
 
-Depending on your CSV, there are several pkeys situations:
+Depending on your CSV, there are several pkeys situations.
 
-  * Single column: The primary key is in a single column;
-    * Sample: ``` "pkey-columns" : "4" ```
-    * Without ```pkey-alias``` defined, the column name is taken with spaces trimmed.
+#### PKEY is a single column ####
+
+The 
+
+Sample: ``` "pkey-pattern" : "4", ```
+
+Let ```pk``` be the value of the pkey in a certain line.  The triples generated will be:
+
+```
+pk a conceptname .
+```
+
+#### PKEY is a single column with prefix ####
+
+
   * Multiple columns
     * Sample: ``` "pkey-columns" : "6,2,4,8" ```
     * Without ```pkey-alias``` defined, the column names are stuck together  with spaces trimmed.
