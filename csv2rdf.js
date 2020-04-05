@@ -10,44 +10,44 @@
 
 //const rdfjs = require('./rdfjs');
 
-const testHeader = "DS origin;DS Number;DS Type;DS Version;DS Name;DS State;DS Part Classification";
-
-const testPatterns = ["c3", "c3+c4", "c4+c3+c12", "c4+R", "u3+u4+R", "$foo_+c3+u4+R+c7",
-                       "c3+$foo+c12+$bar", "u3+c4*+$bar"];
-
 const patternElements = ["c", "u", "$", "R"];
 const patternSeparator = "+";
 
-console.log(testPatterns.length);
 
 function transform(data, pat, rn) {
-    var tokens = pat.split(patternSeparator);
-    var token;
-    var acc = "";
-    var e = '';
-    for token in tokens {
-        e = token[0];
-        switch(e) {
-        case 'c':
-            acc += data[parseInt(token.substring(1)) - 1].replace(/ /g,'');
-        case 'u':
-	    acc += data[parseInt(token.substring(1)) - 1].replace(/ /g,'_');
-	case '$':
-	    acc += token.substring(1);
-	case 'R':
+    let tokens = pat.split(patternSeparator);
+    let acc = "";
+    let e = '';
+    for (let i=0; i<tokens.length; i++) {
+        e = tokens[i][0];
+        if (e == "c") {
+            let k = parseInt(tokens[i].substring(1));
+            if (k > 7) throw ("Error: Column " + k + " does not exist.");
+            acc += data[k - 1].replace(/ /g,'');
+        }
+        else if (e == "u"){
+            let k = parseInt(tokens[i].substring(1));
+            if (k > 7) throw ("Error: Column " + k + " does not exist.");
+            acc += data[k - 1].replace(/ /g,'_');
+        }
+        else if (e == "$")
+	    acc += tokens[i].substring(1);
+        else if (e == "R")
 	    acc += rn;
-	default:
+	else {
 	    console.log("Pattern in token not recognized: " + e);
 	    return;
-	    
-	    
-	    
-            
         }
     }
+    return acc;
 }
 
 
 
-
+/*=======================================
+ * Exports
+ *=======================================*/
+module.exports = {
+    transform : transform,
+}
 
