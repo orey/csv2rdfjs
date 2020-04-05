@@ -10,10 +10,33 @@
 
 //const rdfjs = require('./rdfjs');
 
+const testHeader = "DS origin;DS Number;DS Type;DS Version;DS Name;DS State;DS Part Classification";
 
-class CsvDescription {
-    constructor 
+const testPatterns = ["c3", "c3+c4", "c4+c3+c12", "c4+R", "u3+u4+R", "$foo_+c3+u4+R+c7",
+                       "c3+$foo+c12+$bar", "u3+c4*+$bar"];
+
+const patternElements = ["c", "u", "$", "R"];
+const patternSeparator = "+";
+
+console.log(testPatterns.length);
+
+function transform(data, pat, rn) {
+    var tokens = pat.split(patternSeparator);
+    var token;
+    var acc = "";
+    var e = '';
+    for token in tokens {
+        e = token[0];
+        switch(e) {
+        case 'c':
+            acc += data[parseInt(token.substring(1)) - 1];
+            case: 
+            
+        }
+    }
 }
+
+
 
 
 
