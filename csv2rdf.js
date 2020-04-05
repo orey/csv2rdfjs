@@ -29,8 +29,19 @@ function transform(data, pat, rn) {
         e = token[0];
         switch(e) {
         case 'c':
-            acc += data[parseInt(token.substring(1)) - 1];
-            case: 
+            acc += data[parseInt(token.substring(1)) - 1].replace(/ /g,'');
+        case 'u':
+	    acc += data[parseInt(token.substring(1)) - 1].replace(/ /g,'_');
+	case '$':
+	    acc += token.substring(1);
+	case 'R':
+	    acc += rn;
+	default:
+	    console.log("Pattern in token not recognized: " + e);
+	    return;
+	    
+	    
+	    
             
         }
     }
