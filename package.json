@@ -23,5 +23,8 @@
   "homepage": "https://github.com/orey/csv2rdfjs#readme",
   "dependencies": {
     "csv-reader": "^1.0.6"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.4"
   }
 }
