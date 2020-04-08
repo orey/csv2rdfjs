@@ -11,7 +11,7 @@
 //const rdfjs = require('./rdfjs');
 
 const patternSeparator = "+";
-const pkeyPatternElements = ["c", "u", "$"];
+const pkeyPatternElements = ["c", "u", "v", "w", "$"];
 
 /**
  * Use the "pkeyPattern" to build the primary key from
@@ -19,7 +19,7 @@ const pkeyPatternElements = ["c", "u", "$"];
  * @param {data} The array of strings containing column names
  * @param {pat} The pkeyPattern
  */
-function pkeyParser(data, pat, rn) {
+function pkeyParser(headers, linedata, pat, rn) {
     let tokens = pat.split(patternSeparator);
     let acc = "";
     let e = '';
