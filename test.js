@@ -13,6 +13,8 @@ const assert = require("assert");
 
 const testHeader = "DS origin;DS Number;DS Type;DS Version;DS Name;DS State;DS Part Classification";
 
+const linedata = "ATTB item;U010A0602E02;Paperware Design Solution;A;BONDING AIRFRAME BARE STRUCTURE;Released;"
+
 const testPatterns = ["c3", "c3+c4", "c4+c3+c12", "c4+c1", "u3+u4", "$foo_+c3+u4+c7",
                       "c3+$foo+c12+$bar", "u3+c4*+$bar", "$blah+c7+u4+_ho"];
 

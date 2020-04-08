@@ -19,7 +19,7 @@ const pkeyPatternElements = ["c", "u", "$"];
  * @param {data} The array of strings containing column names
  * @param {pat} The pkeyPattern
  */
-function pkeyParser(data, pat) {
+function pkeyParser(data, pat, rn) {
     let tokens = pat.split(patternSeparator);
     let acc = "";
     let e = '';
@@ -37,8 +37,8 @@ function pkeyParser(data, pat) {
         }
         else if (e == "$")
 	    acc += tokens[i].substring(1);
-//        else if (e == "R")
-//	    acc += rn;
+        else if (e == "R")
+	    acc += rn;
 	else {
 	    throw ("Error: Pattern in token not recognized: " + e);
 	    return;

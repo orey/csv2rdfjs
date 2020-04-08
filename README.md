@@ -16,7 +16,7 @@ Samples are provided in the ```sample``` folder.
 
 The first argument is the JSON configuration file is the filename. It can be a full path to a file.
 
-The first line of the CSV is considered as having the names of the columns.
+The first line of the CSV is considered as having the names of the columns. Currently, the CSV file is supposed to use ";" as a separator.
 
 ### Concept
 
@@ -34,6 +34,44 @@ The triple generated will be:
 ```
 conceptname rdfs:subClassOf rdfs:Class.
 ```
+
+### Primary key pattern
+
+Each line of the CSV file must define a unique line identifier: the primary key. Primary key is defined by a pattern in the JSON configuration file.
+
+Primary key can be defined by 5 parameters:
+
+  * Fixed: The concept name => represented by the "x" character;
+  * Variable: The row number => represented by the "R" character;
+  * Fixed: The headers of the columns involved in the primary key => represented by the "c" or "u" characters;
+  * Variable: The values of the columns involved in the primary key => represented by the "w or "w" characters;
+  * Fixed: One or several fixed texts included in this primary key => starting with the "$" characters.
+  
+The primary key is a crucial element to define because it will be either the subject or the object of most triples generated from the CSV file.
+
+Warnings:
+
+  * The program will not check the conformity of your URI. You should manage to have URI conformed to the W3C (example: a URI cannot start by a number).
+  * You must have a variable part in your pattern, or depending on the values of the columns, or depending on the row number.
+  
+The choice of a good primary key is an essential design choice for the usability of RDF data. Choose carefully your options to be able to benefit fully from the power of RDF.
+
+Sample of patterms for primary key:
+
+```
+    "pkey" : "c3",  => Column 3 is the primary key
+    "pkey" : "c3+c4", => The concatena
+    "pkey" : "c4+c3+c12",
+    "pkey" : "c4+c1",
+    "pkey" : "u3+u4",
+    "pkey" : "$foo_+c3+u4+c7",
+    "pkey" : "c3+$foo+c12+$bar",
+    "pkey" : "u3+c4*+$bar",
+    "pkey" : "$blah+c7+u4+_ho"
+```
+
+
+Each cell of the CSV file will generate one or many triples of the form ```s o p ```. Depending on the direction indicated in the configuration file 
 
 ### Building names with patterns
 
