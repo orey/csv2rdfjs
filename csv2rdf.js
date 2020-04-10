@@ -11,15 +11,32 @@
 //const rdfjs = require('./rdfjs');
 
 const patternSeparator = "+";
-const pkeyPatternElements = ["c", "u", "v", "w", "$"];
+const pkeyPatternElements = ["x", "c", "u", "v", "w", "$", "R"];
+
+
+function parseLine(line, separator) {
+    return line.split(separator);
+}
+
+function createConfig(){
+
+}
+
+
+
+
+
 
 /**
  * Use the "pkeyPattern" to build the primary key from
  * the first row of the CSV file with column names
+ * @param {conceptname} The concept name
+ * @param {headers} An array of headers
+ * @param {data} The array of strings containing column names
  * @param {data} The array of strings containing column names
  * @param {pat} The pkeyPattern
  */
-function pkeyParser(headers, linedata, pat, rn) {
+function pkeyParser(conceptname, headers, linedata, pat, rn) {
     let tokens = pat.split(patternSeparator);
     let acc = "";
     let e = '';
@@ -53,6 +70,7 @@ function pkeyParser(headers, linedata, pat, rn) {
  * Exports
  *=======================================*/
 module.exports = {
+    parseLine : parseLine,
     pkeyParser : pkeyParser,
 }
 

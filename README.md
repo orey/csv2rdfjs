@@ -39,13 +39,15 @@ conceptname rdfs:subClassOf rdfs:Class.
 
 Each line of the CSV file must define a unique line identifier: the primary key. Primary key is defined by a pattern in the JSON configuration file.
 
-Primary key can be defined by 5 parameters:
+Primary key can be defined by 5 parameters in 2 categories:
 
-  * Fixed: The concept name => represented by the "x" character;
-  * Variable: The row number => represented by the "R" character;
-  * Fixed: The headers of the columns involved in the primary key => represented by the "c" or "u" characters;
-  * Variable: The values of the columns involved in the primary key => represented by the "w or "w" characters;
-  * Fixed: One or several fixed texts included in this primary key => starting with the "$" characters.
+  * Fixed data
+    * The concept name => represented by the "x" character;
+    * The headers of the columns involved in the primary key => represented by the "c" or "u" characters;
+    * One or several fixed texts included in this primary key => starting with the "$" characters.
+  * Variable data
+    * The row number => represented by the "R" character;
+    * The values of the columns involved in the primary key => represented by the "v" or "w" characters;
   
 The primary key is a crucial element to define because it will be either the subject or the object of most triples generated from the CSV file.
 
