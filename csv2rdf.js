@@ -9,6 +9,7 @@
 'use strict';
 
 //const rdfjs = require('./rdfjs');
+const fs = require("fs");
 
 const patternSeparator = "+";
 const pkeyPatternElements = ["x", "c", "u", "v", "w", "$", "R"];
@@ -18,9 +19,27 @@ function parseLine(line, separator) {
     return line.split(separator);
 }
 
-function createConfig(){
-
+function createConfig(config){
+    fs.readFile('./config.json',
+                'utf8',
+                (err, jsonString) => {
+                    if (err) {
+                        console.log("File read failed:", err);
+                        return;
+                    }
+                    console.log('File data:', jsonString);
+                    try {
+                        config = JSON.parse(jsonString);
+                        console.log("filename: ",config.filename);
+                        console.log("conceptname: ",config.conceptname);
+                        console.log("pkey: ",config.pkey);
+                        return config;
+                    }
+                    catch(err) {
+                        console.log('Error parsing JSON string:', err);
+                    }})
 }
+
 
 
 
@@ -64,6 +83,8 @@ function pkeyParser(conceptname, headers, linedata, pat, rn) {
     return acc;
 }
 
+var config = {};
+var prom = new Promise(createConfig(config)).then(console.log(config));
 
 
 /*=======================================
