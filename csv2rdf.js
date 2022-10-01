@@ -40,12 +40,6 @@ function createConfig(config){
                     }})
 }
 
-
-
-
-
-
-
 /**
  * Use the "pkeyPattern" to build the primary key from
  * the first row of the CSV file with column names
